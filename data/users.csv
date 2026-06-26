@@ -1,0 +1,6 @@
+user_id,username,password,role,email,full_name,phone,address
+1,admin,123456,Admin,admin@gmail.com,Quản trị viên,0900000000,Hà Nội
+2,user,123456,User,user@gmail.com,Nguyễn Văn User,0911111111,Hà Đông
+3,linh,123456,User,linh@gmail.com,Trần Khánh Linh,0922222222,Cầu Giấy
+4,minh,123456,User,minh@gmail.com,Lê Minh Đức,0933333333,Mỹ Đình
+5,dat,123456,User,duongthanhdat2301@gmail.com,Thành Đạt Dương,0978908880,cầu giấy

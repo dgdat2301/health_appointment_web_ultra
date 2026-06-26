@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+{% set title = "Đăng nhập" %}
+
+{% block content %}
+<div class="auth-page">
+    <div class="auth-visual">
+        <div class="auth-visual-content">
+            <i class="bi bi-heart-pulse-fill"></i>
+            <h2>Health Booking Ultra</h2>
+            <p>Đăng nhập để đặt lịch khám, xem lịch của bạn và nhận email nhắc lịch.</p>
+        </div>
+    </div>
+
+    <div class="auth-panel">
+        <div class="auth-card-ultra">
+            <h2 class="fw-bold">Đăng nhập</h2>
+            <p class="text-muted">Nhập tài khoản để tiếp tục</p>
+
+            <form method="post" class="mt-4">
+                <div class="mb-3">
+                    <label class="form-label">Tên đăng nhập</label>
+                    <input name="username" class="form-control form-control-lg" required>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Mật khẩu</label>
+                    <input type="password" name="password" class="form-control form-control-lg" required>
+                </div>
+
+                <button class="btn btn-primary btn-lg w-100 rounded-pill fw-bold">Đăng nhập</button>
+            </form>
+
+            <div class="text-center mt-3">
+                <span class="text-muted">Chưa có tài khoản?</span>
+                <a href="{{ url_for('register') }}">Đăng ký</a>
+            </div>
+
+            <div class="demo-box mt-4">
+                <div><strong>Admin:</strong> admin / 123456</div>
+                <div><strong>User:</strong> user / 123456</div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

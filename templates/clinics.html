@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+{% set title = "Danh sách phòng khám" %}
+
+{% block content %}
+<div class="page-title">
+    <div>
+        <span class="page-kicker">Clinics</span>
+        <h2 class="fw-bold">Danh sách phòng khám</h2>
+        <p class="text-muted">Dữ liệu phòng khám, ảnh và khoảng cách giả lập từ clinics.csv.</p>
+    </div>
+</div>
+
+<form class="search-ultra mb-4" method="get">
+    <input name="q" value="{{ q }}" class="form-control form-control-lg" placeholder="Tìm theo tên, địa chỉ, quận/huyện...">
+    <button class="btn btn-primary btn-lg rounded-pill px-4"><i class="bi bi-search"></i> Tìm</button>
+</form>
+
+<div class="row g-4">
+    {% for c in clinics %}
+    <div class="col-md-6 col-lg-4">
+        <div class="clinic-ultra-card clinic-photo-card">
+            <div class="clinic-image-wrap">
+                <img src="{{ url_for('static', filename=c.image) }}" alt="{{ c.clinic_name }}" class="clinic-photo">
+                <span class="distance-pill clinic-distance">{{ c.distance_km }} km</span>
+            </div>
+
+            <div class="clinic-card-body">
+                <h5>{{ c.clinic_name }}</h5>
+                <p class="text-muted mb-2">{{ c.address }}</p>
+                <div class="small text-muted"><i class="bi bi-geo-alt"></i> {{ c.district }}</div>
+                <div class="clinic-rating mt-3">
+                    <i class="bi bi-star-fill"></i> {{ c.rating }}
+                    <span>•</span>
+                    <span>{{ c.open_time }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

@@ -1,0 +1,87 @@
+{% extends "layout.html" %}
+{% set title = "Danh sách lịch hẹn" %}
+
+{% block content %}
+<div class="page-title">
+    <div>
+        <span class="page-kicker">Appointments</span>
+        <h2 class="fw-bold">
+            {% if current_user.role == "Admin" %}Quản lý tất cả lịch hẹn{% else %}Lịch hẹn của tôi{% endif %}
+        </h2>
+        <p class="text-muted">Xem chi tiết, tìm kiếm, lọc trạng thái và hủy lịch.</p>
+    </div>
+</div>
+
+<form class="filter-ultra mb-4" method="get">
+    <div class="row g-2">
+        <div class="col-md-7">
+            <input name="q" value="{{ q }}" class="form-control form-control-lg" placeholder="Tìm theo bệnh nhân, email, bác sĩ, phòng khám...">
+        </div>
+        <div class="col-md-3">
+            <select name="status" class="form-select form-select-lg">
+                <option value="">Tất cả trạng thái</option>
+                <option value="Booked" {% if status == "Booked" %}selected{% endif %}>Booked</option>
+                <option value="Canceled" {% if status == "Canceled" %}selected{% endif %}>Canceled</option>
+            </select>
+        </div>
+        <div class="col-md-2 d-grid">
+            <button class="btn btn-primary btn-lg rounded-pill">Lọc</button>
+        </div>
+    </div>
+</form>
+
+<div class="glass-card p-0 overflow-hidden">
+    <div class="table-responsive">
+        <table class="table table-hover align-middle mb-0 ultra-table">
+            <thead>
+                <tr>
+                    <th>Mã</th>
+                    <th>Bệnh nhân</th>
+                    <th>Bác sĩ</th>
+                    <th>Phòng khám</th>
+                    <th>Thời gian</th>
+                    <th>Trạng thái</th>
+                    <th>Thao tác</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for a in appointments %}
+                <tr>
+                    <td>#{{ a.appointment_id }}</td>
+                    <td>
+                        <div class="fw-bold">{{ a.patient_name }}</div>
+                        <div class="small text-muted">{{ a.patient_email }}</div>
+                    </td>
+                    <td>{{ a.doctor_name }}</td>
+                    <td>{{ a.clinic_name }}</td>
+                    <td>{{ a.appointment_time }}</td>
+                    <td>
+                        {% if a.status == "Booked" %}
+                            <span class="status-badge success">Booked</span>
+                        {% else %}
+                            <span class="status-badge muted">Canceled</span>
+                        {% endif %}
+                    </td>
+                    <td>
+                        <div class="d-flex gap-1">
+                            <a class="btn btn-sm btn-outline-primary rounded-pill" href="{{ url_for('appointment_detail', appointment_id=a.appointment_id) }}">Chi tiết</a>
+                            {% if a.status == "Booked" %}
+                            <form method="post" action="{{ url_for('cancel', appointment_id=a.appointment_id) }}">
+                                <button class="btn btn-sm btn-outline-danger rounded-pill" onclick="return confirm('Bạn chắc chắn muốn hủy lịch này?')">Hủy</button>
+                            </form>
+                            {% endif %}
+                        </div>
+                    </td>
+                </tr>
+                {% endfor %}
+
+                {% if not appointments %}
+                <tr>
+                    <td colspan="7" class="text-center text-muted py-5">Không có lịch hẹn phù hợp.</td>
+                </tr>
+                {% endif %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

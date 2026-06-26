@@ -1,0 +1,161 @@
+{% extends "layout.html" %}
+{% set title = "Trang chủ - Health Booking Ultra" %}
+
+{% block content %}
+<section class="hero-ultra">
+    <div class="hero-glow"></div>
+
+    <div class="row align-items-center">
+        <div class="col-lg-7">
+            <div class="hero-badge">
+                <i class="bi bi-shield-check"></i>
+                Web đặt lịch có phân quyền Admin/User
+            </div>
+
+            <h1 class="hero-title">
+                Đặt lịch khám sức khỏe online nhanh, đẹp và thông minh
+            </h1>
+
+            <p class="hero-subtitle">
+                Tự động chọn phòng khám gần nhất bằng khoảng cách giả lập, tìm bác sĩ đúng chuyên khoa theo triệu chứng, phát hiện trùng lịch và gửi email nhắc lịch thật.
+            </p>
+
+            <div class="d-flex gap-2 flex-wrap">
+                {% if current_user.user_id %}
+                    <a href="{{ url_for('book') }}" class="btn btn-light btn-lg rounded-pill px-4 fw-bold">
+                        <i class="bi bi-calendar2-plus"></i> Đặt lịch ngay
+                    </a>
+                    <a href="{{ url_for('appointments') }}" class="btn btn-outline-light btn-lg rounded-pill px-4">
+                        Xem lịch hẹn
+                    </a>
+                {% else %}
+                    <a href="{{ url_for('register') }}" class="btn btn-light btn-lg rounded-pill px-4 fw-bold">
+                        <i class="bi bi-person-plus"></i> Tạo tài khoản
+                    </a>
+                    <a href="{{ url_for('login') }}" class="btn btn-outline-light btn-lg rounded-pill px-4">
+                        Đăng nhập
+                    </a>
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="col-lg-5 mt-5 mt-lg-0">
+            <div class="hero-device">
+                <div class="device-top">
+                    <span></span><span></span><span></span>
+                </div>
+                <div class="device-card active">
+                    <i class="bi bi-hospital"></i>
+                    <div>
+                        <strong>Phòng khám gần nhất</strong>
+                        <p>Chọn theo distance_km trong CSV</p>
+                    </div>
+                </div>
+                <div class="device-card">
+                    <i class="bi bi-person-heart"></i>
+                    <div>
+                        <strong>Bác sĩ phù hợp</strong>
+                        <p>Lọc theo symptom_keyword</p>
+                    </div>
+                </div>
+                <div class="device-card">
+                    <i class="bi bi-envelope-check"></i>
+                    <div>
+                        <strong>Email nhắc lịch</strong>
+                        <p>Gửi đến patient_email</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="row g-3 mt-4">
+    <div class="col-md-3">
+        <div class="metric-ultra">
+            <div class="metric-icon blue"><i class="bi bi-hospital"></i></div>
+            <div>
+                <div class="metric-number">{{ clinic_count }}</div>
+                <div class="metric-label">Phòng khám</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="metric-ultra">
+            <div class="metric-icon green"><i class="bi bi-person-vcard"></i></div>
+            <div>
+                <div class="metric-number">{{ doctor_count }}</div>
+                <div class="metric-label">Bác sĩ</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="metric-ultra">
+            <div class="metric-icon purple"><i class="bi bi-people"></i></div>
+            <div>
+                <div class="metric-number">{{ patient_count }}</div>
+                <div class="metric-label">Bệnh nhân</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="metric-ultra">
+            <div class="metric-icon orange"><i class="bi bi-calendar-check"></i></div>
+            <div>
+                <div class="metric-number">{{ appointment_count }}</div>
+                <div class="metric-label">Lịch đang đặt</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row g-4 mt-2">
+    <div class="col-lg-8">
+        <div class="glass-card">
+            <div class="card-head">
+                <h5><i class="bi bi-clock-history text-primary"></i> Lịch hẹn gần đây</h5>
+            </div>
+
+            {% if recent %}
+                <div class="appointment-list">
+                    {% for a in recent %}
+                    <a href="{{ url_for('appointment_detail', appointment_id=a.appointment_id) }}" class="appointment-item">
+                        <div class="appointment-avatar">{{ a.patient_name[0] }}</div>
+                        <div class="flex-grow-1">
+                            <strong>{{ a.patient_name }}</strong>
+                            <div class="small text-muted">{{ a.doctor_name }} • {{ a.clinic_name }} • {{ a.appointment_time }}</div>
+                        </div>
+                        <span class="status-badge success">{{ a.status }}</span>
+                    </a>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <div class="empty-state">
+                    <i class="bi bi-calendar-x"></i>
+                    <p>Chưa có lịch hẹn nào.</p>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="col-lg-4">
+        <div class="glass-card h-100">
+            <div class="card-head">
+                <h5><i class="bi bi-patch-check text-success"></i> Đáp ứng đề bài</h5>
+            </div>
+            <ul class="feature-list">
+                <li>CSV: users, clinics, doctors, patients, appointments</li>
+                <li>Tìm phòng khám gần nhất bằng distance_km</li>
+                <li>Chọn bác sĩ theo triệu chứng</li>
+                <li>Đặt lịch theo thời gian mong muốn</li>
+                <li>Trùng lịch thì đề xuất giờ khác</li>
+                <li>Gửi email thật đến patient_email</li>
+                <li>Đăng nhập và phân quyền Admin/User</li>
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}

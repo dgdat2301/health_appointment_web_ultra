@@ -1,0 +1,59 @@
+{% extends "layout.html" %}
+{% set title = "Chi tiết lịch hẹn" %}
+
+{% block content %}
+<div class="page-title">
+    <div>
+        <span class="page-kicker">Detail</span>
+        <h2 class="fw-bold">Chi tiết lịch hẹn #{{ appointment.appointment_id }}</h2>
+        <p class="text-muted">Thông tin đầy đủ của lịch khám.</p>
+    </div>
+</div>
+
+<div class="glass-card">
+    <div class="detail-doctor-header">
+        {% if appointment.doctor_image %}
+        <img src="{{ url_for('static', filename=appointment.doctor_image) }}" alt="{{ appointment.doctor_name }}" class="detail-doctor-photo">
+        {% endif %}
+        <div>
+            <div class="small text-muted">Bác sĩ phụ trách</div>
+            <h4 class="fw-bold mb-0">{{ appointment.doctor_name }}</h4>
+            <div class="text-muted">{{ appointment.specialty }}</div>
+        </div>
+    </div>
+
+    <div class="detail-clinic-header">
+        {% if appointment.clinic_image %}
+        <img src="{{ url_for('static', filename=appointment.clinic_image) }}" alt="{{ appointment.clinic_name }}" class="detail-clinic-photo">
+        {% endif %}
+        <div>
+            <div class="small text-muted">Phòng khám</div>
+            <h4 class="fw-bold mb-0">{{ appointment.clinic_name }}</h4>
+            <div class="text-muted">{{ appointment.clinic_address }} • {{ appointment.distance_km }} km</div>
+        </div>
+    </div>
+
+    <div class="row g-3">
+        <div class="col-md-6"><div class="detail-tile"><span>Bệnh nhân</span><strong>{{ appointment.patient_name }}</strong></div></div>
+        <div class="col-md-6"><div class="detail-tile"><span>Email</span><strong>{{ appointment.patient_email }}</strong></div></div>
+        <div class="col-md-6"><div class="detail-tile"><span>Số điện thoại</span><strong>{{ appointment.phone }}</strong></div></div>
+        <div class="col-md-6"><div class="detail-tile"><span>Địa chỉ nhà</span><strong>{{ appointment.home_address }}</strong></div></div>
+        <div class="col-md-6"><div class="detail-tile"><span>Bác sĩ</span><strong>{{ appointment.doctor_name }}</strong></div></div>
+        <div class="col-md-6"><div class="detail-tile"><span>Chuyên khoa</span><strong>{{ appointment.specialty }}</strong></div></div>
+        <div class="col-md-6"><div class="detail-tile"><span>Phòng khám</span><strong>{{ appointment.clinic_name }}</strong></div></div>
+        <div class="col-md-6"><div class="detail-tile"><span>Địa chỉ phòng khám</span><strong>{{ appointment.clinic_address }}</strong></div></div>
+        <div class="col-md-6"><div class="detail-tile"><span>Triệu chứng</span><strong>{{ appointment.symptom }}</strong></div></div>
+        <div class="col-md-6"><div class="detail-tile"><span>Thời gian</span><strong>{{ appointment.appointment_time }}</strong></div></div>
+        <div class="col-md-6"><div class="detail-tile"><span>Trạng thái</span><strong>{{ appointment.status }}</strong></div></div>
+    </div>
+
+    <div class="mt-4 d-flex gap-2">
+        <a href="{{ url_for('appointments') }}" class="btn btn-light rounded-pill px-4">Quay lại</a>
+        {% if appointment.status == "Booked" %}
+        <form method="post" action="{{ url_for('cancel', appointment_id=appointment.appointment_id) }}">
+            <button class="btn btn-danger rounded-pill px-4" onclick="return confirm('Bạn chắc chắn muốn hủy lịch này?')">Hủy lịch</button>
+        </form>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

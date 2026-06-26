@@ -1,0 +1,21 @@
+﻿clinic_id,clinic_name,address,district,distance_km,rating,open_time,image
+1,Phòng khám Đại Nam,Số 1 Phố Xốm,Hà Đông,2.5,4.8,07:30-17:00,images/clinics/clinic_1.svg
+2,Phòng khám Medlatec,42 Nghĩa Dũng,Ba Đình,6.0,4.7,07:00-18:00,images/clinics/clinic_2.svg
+3,Phòng khám Vinmec,458 Minh Khai,Hai Bà Trưng,4.2,4.9,08:00-17:30,images/clinics/clinic_3.svg
+4,Phòng khám Bạch Mai,78 Giải Phóng,Đống Đa,7.8,4.6,07:00-17:00,images/clinics/clinic_4.svg
+5,Phòng khám Hoàn Mỹ,120 Nguyễn Trãi,Thanh Xuân,5.1,4.5,07:30-18:00,images/clinics/clinic_5.svg
+6,Phòng khám Tâm An,33 Tam Trinh,Hoàng Mai,3.9,4.6,08:00-20:00,images/clinics/clinic_6.svg
+7,Phòng khám An Khang,55 Trần Thái Tông,Cầu Giấy,3.2,4.7,07:30-19:00,images/clinics/clinic_7.svg
+8,Phòng khám Hồng Ngọc,8 Châu Văn Liêm,Nam Từ Liêm,4.7,4.8,07:00-18:30,images/clinics/clinic_8.svg
+9,Phòng khám Thu Cúc,216 Trần Duy Hưng,Cầu Giấy,5.5,4.8,07:00-17:30,images/clinics/clinic_9.svg
+10,Phòng khám Gia Đình,21 Lê Văn Lương,Thanh Xuân,2.9,4.4,08:00-17:00,images/clinics/clinic_10.svg
+11,Phòng khám Việt Pháp,12 Núi Trúc,Ba Đình,6.5,4.7,07:30-18:00,images/clinics/clinic_11.svg
+12,Phòng khám Sức Khỏe Việt,90 Hồ Tùng Mậu,Bắc Từ Liêm,5.9,4.3,07:00-17:00,images/clinics/clinic_12.svg
+13,Phòng khám Tâm Đức,77 Nguyễn Văn Cừ,Long Biên,8.2,4.5,08:00-18:00,images/clinics/clinic_13.svg
+14,Phòng khám Minh Tâm,19 Phạm Hùng,Nam Từ Liêm,3.6,4.6,07:30-17:30,images/clinics/clinic_14.svg
+15,Phòng khám Sao Mai,102 Kim Mã,Ba Đình,6.9,4.4,08:00-19:00,images/clinics/clinic_15.svg
+16,Phòng khám An Sinh,66 Lạc Long Quân,Tây Hồ,7.4,4.5,07:00-18:00,images/clinics/clinic_16.svg
+17,Phòng khám Hà Nội Care,31 Nguyễn Xiển,Thanh Xuân,4.4,4.7,07:30-20:00,images/clinics/clinic_17.svg
+18,Phòng khám Bình An,15 Quang Trung,Hà Đông,2.1,4.6,08:00-17:30,images/clinics/clinic_18.svg
+19,Phòng khám Thiện Nhân,88 Trường Chinh,Đống Đa,5.3,4.5,07:30-18:30,images/clinics/clinic_19.svg
+20,Phòng khám Phúc An,22 Lĩnh Nam,Hoàng Mai,6.1,4.3,08:00-17:00,images/clinics/clinic_20.svg

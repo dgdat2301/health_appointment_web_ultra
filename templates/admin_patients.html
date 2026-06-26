@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+{% set title = "Danh sách bệnh nhân" %}
+
+{% block content %}
+<div class="page-title">
+    <div>
+        <span class="page-kicker">Patients</span>
+        <h2 class="fw-bold">Danh sách bệnh nhân</h2>
+        <p class="text-muted">Dữ liệu từ patients.csv.</p>
+    </div>
+</div>
+
+<div class="glass-card p-0 overflow-hidden">
+    <div class="table-responsive">
+        <table class="table table-hover align-middle mb-0 ultra-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Họ tên</th>
+                    <th>Email</th>
+                    <th>SĐT</th>
+                    <th>Địa chỉ nhà</th>
+                    <th>User ID</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for p in patients %}
+                <tr>
+                    <td>#{{ p.patient_id }}</td>
+                    <td>{{ p.patient_name }}</td>
+                    <td>{{ p.patient_email }}</td>
+                    <td>{{ p.phone }}</td>
+                    <td>{{ p.home_address }}</td>
+                    <td>{{ p.user_id }}</td>
+                </tr>
+                {% endfor %}
+                {% if not patients %}
+                <tr><td colspan="6" class="text-center text-muted py-5">Chưa có bệnh nhân.</td></tr>
+                {% endif %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

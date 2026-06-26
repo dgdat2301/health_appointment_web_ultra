@@ -1,0 +1,88 @@
+{% extends "layout.html" %}
+{% set title = "Đặt lịch khám" %}
+
+{% block content %}
+<div class="page-title">
+    <div>
+        <span class="page-kicker">Appointment</span>
+        <h2 class="fw-bold">Đặt lịch khám</h2>
+        <p class="text-muted">Hệ thống tự chọn phòng khám gần nhất và bác sĩ phù hợp.</p>
+    </div>
+</div>
+
+<div class="row g-4">
+    <div class="col-lg-8">
+        <div class="form-card-ultra">
+            <form method="post">
+                <div class="form-section-title"><i class="bi bi-person"></i> Thông tin bệnh nhân</div>
+
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">Họ tên bệnh nhân</label>
+                        <input type="text" name="patient_name" value="{{ default_name }}" class="form-control form-control-lg" required>
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">Email nhận nhắc lịch</label>
+                        <input type="email" name="patient_email" value="{{ default_email }}" class="form-control form-control-lg" required>
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">Số điện thoại</label>
+                        <input type="text" name="phone" value="{{ default_phone }}" class="form-control form-control-lg" required>
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">Địa chỉ nhà</label>
+                        <input type="text" name="home_address" value="{{ default_address }}" class="form-control form-control-lg" required>
+                    </div>
+                </div>
+
+                <div class="form-section-title mt-3"><i class="bi bi-heart-pulse"></i> Thông tin khám</div>
+
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">Triệu chứng</label>
+                        <input type="text" name="symptom" class="form-control form-control-lg" placeholder="sốt, đau họng, đau lưng..." required>
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">Thời gian muốn khám</label>
+                        <input type="datetime-local" name="appointment_time" class="form-control form-control-lg" required>
+                    </div>
+                </div>
+
+                <div class="d-flex gap-2 mt-4 flex-wrap">
+                    <button type="submit" class="btn btn-primary btn-lg rounded-pill px-4 fw-bold">
+                        <i class="bi bi-check2-circle"></i> Xác nhận đặt lịch
+                    </button>
+                    <a href="{{ url_for('index') }}" class="btn btn-light btn-lg rounded-pill px-4">Quay lại</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="col-lg-4">
+        <div class="side-card-ultra">
+            <h5><i class="bi bi-stars"></i> Gợi ý triệu chứng</h5>
+            <div class="tag-cloud mt-3">
+                <span>sốt</span>
+                <span>đau họng</span>
+                <span>đau lưng</span>
+                <span>đau đầu</span>
+                <span>đau bụng</span>
+                <span>đau răng</span>
+                <span>đau mắt</span>
+                <span>mẩn ngứa</span>
+                <span>khó thở</span>
+                <span>đau ngực</span>
+                <span>chóng mặt</span>
+            </div>
+            <hr>
+            <div class="small text-muted">
+                Nếu lịch bị trùng, hệ thống tự động cộng thêm 30 phút cho đến khi tìm được khung giờ trống.
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

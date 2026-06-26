@@ -1,0 +1,56 @@
+{% extends "layout.html" %}
+{% set title = "Admin Dashboard" %}
+
+{% block content %}
+<div class="page-title">
+    <div>
+        <span class="page-kicker">Admin</span>
+        <h2 class="fw-bold">Admin Dashboard</h2>
+        <p class="text-muted">Quản trị toàn bộ hệ thống đặt lịch khám.</p>
+    </div>
+</div>
+
+<div class="row g-3">
+    <div class="col-md-4 col-lg-2"><div class="admin-mini"><strong>{{ user_count }}</strong><span>Tài khoản</span></div></div>
+    <div class="col-md-4 col-lg-2"><div class="admin-mini"><strong>{{ clinic_count }}</strong><span>Phòng khám</span></div></div>
+    <div class="col-md-4 col-lg-2"><div class="admin-mini"><strong>{{ doctor_count }}</strong><span>Bác sĩ</span></div></div>
+    <div class="col-md-4 col-lg-2"><div class="admin-mini"><strong>{{ patient_count }}</strong><span>Bệnh nhân</span></div></div>
+    <div class="col-md-4 col-lg-2"><div class="admin-mini"><strong>{{ booked_count }}</strong><span>Booked</span></div></div>
+    <div class="col-md-4 col-lg-2"><div class="admin-mini"><strong>{{ canceled_count }}</strong><span>Canceled</span></div></div>
+</div>
+
+<div class="row g-4 mt-2">
+    <div class="col-lg-8">
+        <div class="glass-card">
+            <div class="card-head"><h5>Lịch hẹn mới nhất</h5></div>
+            {% if recent %}
+                <div class="appointment-list">
+                    {% for a in recent %}
+                    <a href="{{ url_for('appointment_detail', appointment_id=a.appointment_id) }}" class="appointment-item">
+                        <div class="appointment-avatar">{{ a.patient_name[0] }}</div>
+                        <div class="flex-grow-1">
+                            <strong>{{ a.patient_name }}</strong>
+                            <div class="small text-muted">{{ a.doctor_name }} • {{ a.clinic_name }} • {{ a.appointment_time }}</div>
+                        </div>
+                        <span class="status-badge success">{{ a.status }}</span>
+                    </a>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <div class="empty-state"><i class="bi bi-calendar-x"></i><p>Chưa có lịch hẹn.</p></div>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="col-lg-4">
+        <div class="side-card-ultra h-100">
+            <h5>Quản trị nhanh</h5>
+            <div class="d-grid gap-2 mt-3">
+                <a href="{{ url_for('appointments') }}" class="btn btn-primary rounded-pill">Quản lý lịch hẹn</a>
+                <a href="{{ url_for('admin_users') }}" class="btn btn-outline-primary rounded-pill">Quản lý tài khoản</a>
+                <a href="{{ url_for('admin_patients') }}" class="btn btn-outline-primary rounded-pill">Danh sách bệnh nhân</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

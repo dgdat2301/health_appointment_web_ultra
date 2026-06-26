@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+{% set title = "Quản lý tài khoản" %}
+
+{% block content %}
+<div class="page-title">
+    <div>
+        <span class="page-kicker">Users</span>
+        <h2 class="fw-bold">Quản lý tài khoản</h2>
+        <p class="text-muted">Dữ liệu từ users.csv.</p>
+    </div>
+</div>
+
+<div class="glass-card p-0 overflow-hidden">
+    <div class="table-responsive">
+        <table class="table table-hover align-middle mb-0 ultra-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Username</th>
+                    <th>Họ tên</th>
+                    <th>Email</th>
+                    <th>Role</th>
+                    <th>SĐT</th>
+                    <th>Địa chỉ</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for u in users %}
+                <tr>
+                    <td>#{{ u.user_id }}</td>
+                    <td>{{ u.username }}</td>
+                    <td>{{ u.full_name }}</td>
+                    <td>{{ u.email }}</td>
+                    <td><span class="status-badge info">{{ u.role }}</span></td>
+                    <td>{{ u.phone }}</td>
+                    <td>{{ u.address }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

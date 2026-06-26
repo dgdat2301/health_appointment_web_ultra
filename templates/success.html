@@ -1,0 +1,51 @@
+{% extends "layout.html" %}
+{% set title = "Đặt lịch thành công" %}
+
+{% block content %}
+<div class="success-box-ultra">
+    <div class="success-icon-ultra"><i class="bi bi-check2"></i></div>
+    <h2 class="fw-bold">Đặt lịch thành công</h2>
+    <p class="text-muted">Thông tin lịch hẹn đã được lưu và email nhắc lịch đã được xử lý.</p>
+</div>
+
+<div class="glass-card mt-4">
+    <div class="success-doctor-strip">
+        <img src="{{ url_for('static', filename=doctor.image) }}" alt="{{ doctor.doctor_name }}">
+        <div>
+            <div class="small text-muted">Bác sĩ phụ trách</div>
+            <h5 class="mb-0">{{ doctor.doctor_name }} - {{ doctor.specialty }}</h5>
+        </div>
+    </div>
+
+    <div class="success-clinic-strip">
+        <img src="{{ url_for('static', filename=clinic.image) }}" alt="{{ clinic.clinic_name }}">
+        <div>
+            <div class="small text-muted">Phòng khám</div>
+            <h5 class="mb-0">{{ clinic.clinic_name if clinic else "Không rõ" }}</h5>
+            <div class="text-muted small">{{ clinic.address if clinic else "" }} • {{ clinic.distance_km if clinic else "" }} km</div>
+        </div>
+    </div>
+
+    {% if suggested %}
+    <div class="alert alert-warning">
+        Lịch ban đầu bị trùng, hệ thống đã tự động chuyển sang khung giờ: <strong>{{ suggested }}</strong>
+    </div>
+    {% endif %}
+
+    <div class="row g-3">
+        <div class="col-md-6"><div class="detail-tile"><span>Mã lịch</span><strong>#{{ appointment.appointment_id }}</strong></div></div>
+        <div class="col-md-6"><div class="detail-tile"><span>Thời gian</span><strong>{{ appointment.appointment_time }}</strong></div></div>
+        <div class="col-md-6"><div class="detail-tile"><span>Bệnh nhân</span><strong>{{ appointment.patient_name }}</strong></div></div>
+        <div class="col-md-6"><div class="detail-tile"><span>Email</span><strong>{{ appointment.patient_email }}</strong></div></div>
+        <div class="col-md-6"><div class="detail-tile"><span>Bác sĩ</span><strong>{{ doctor.doctor_name }} - {{ doctor.specialty }}</strong></div></div>
+        <div class="col-md-6"><div class="detail-tile"><span>Phòng khám</span><strong>{{ clinic.clinic_name if clinic else "Không rõ" }}</strong></div></div>
+        <div class="col-md-6"><div class="detail-tile"><span>Phòng khám gần nhất</span><strong>{{ nearest_clinic.clinic_name }} - {{ nearest_clinic.distance_km }} km</strong></div></div>
+        <div class="col-md-6"><div class="detail-tile"><span>Email nhắc lịch</span><strong>{{ email_message }}</strong></div></div>
+    </div>
+
+    <div class="mt-4 d-flex gap-2">
+        <a href="{{ url_for('book') }}" class="btn btn-primary rounded-pill px-4">Đặt lịch khác</a>
+        <a href="{{ url_for('appointments') }}" class="btn btn-outline-primary rounded-pill px-4">Xem danh sách lịch</a>
+    </div>
+</div>
+{% endblock %}

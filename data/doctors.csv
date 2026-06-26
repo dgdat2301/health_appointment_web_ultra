@@ -1,0 +1,31 @@
+﻿doctor_id,doctor_name,specialty,clinic_id,symptom_keyword,experience_years,rating,image
+1,Nguyễn Văn An,Nội tổng quát,1,sốt,12,4.8,images/doctors/doctor_1.svg
+2,Trần Thị Bình,Da liễu,1,mẩn ngứa,9,4.7,images/doctors/doctor_2.svg
+3,Lê Văn Cường,Tai mũi họng,2,đau họng,10,4.6,images/doctors/doctor_3.svg
+4,Phạm Thị Dung,Cơ xương khớp,3,đau lưng,14,4.9,images/doctors/doctor_4.svg
+5,Hoàng Minh Đức,Tim mạch,4,đau ngực,16,4.8,images/doctors/doctor_5.svg
+6,Vũ Thị Hạnh,Tiêu hóa,5,đau bụng,11,4.7,images/doctors/doctor_6.svg
+7,Đặng Văn Hải,Nhi khoa,1,ho,8,4.6,images/doctors/doctor_7.svg
+8,Ngô Thị Lan,Mắt,2,đau mắt,13,4.7,images/doctors/doctor_8.svg
+9,Bùi Văn Nam,Răng hàm mặt,3,đau răng,7,4.5,images/doctors/doctor_9.svg
+10,Đỗ Thị Mai,Thần kinh,4,đau đầu,15,4.8,images/doctors/doctor_10.svg
+11,Phan Thu Hà,Sản phụ khoa,6,đau bụng dưới,10,4.6,images/doctors/doctor_11.svg
+12,Trịnh Minh Quân,Hô hấp,2,khó thở,12,4.7,images/doctors/doctor_12.svg
+13,Nguyễn Hữu Long,Nội tiết,7,mệt mỏi,11,4.5,images/doctors/doctor_13.svg
+14,Phạm Gia Huy,Chấn thương chỉnh hình,8,đau khớp,9,4.6,images/doctors/doctor_14.svg
+15,Lê Thị Hương,Dinh dưỡng,9,sụt cân,6,4.4,images/doctors/doctor_15.svg
+16,Trần Quốc Bảo,Tiết niệu,10,tiểu buốt,13,4.7,images/doctors/doctor_16.svg
+17,Nguyễn Thùy Linh,Tâm lý,11,mất ngủ,8,4.8,images/doctors/doctor_17.svg
+18,Võ Minh Khôi,Da liễu,12,nổi mụn,7,4.5,images/doctors/doctor_18.svg
+19,Đinh Ngọc Anh,Tai mũi họng,13,nghẹt mũi,9,4.6,images/doctors/doctor_19.svg
+20,Chu Văn Sơn,Hô hấp,14,đau tức ngực,10,4.6,images/doctors/doctor_20.svg
+21,Nguyễn Thị Ngọc,Nội tổng quát,15,chóng mặt,12,4.7,images/doctors/doctor_21.svg
+22,Lê Anh Tú,Cơ xương khớp,16,đau vai gáy,11,4.8,images/doctors/doctor_22.svg
+23,Hoàng Thị Yến,Tiêu hóa,17,buồn nôn,8,4.4,images/doctors/doctor_23.svg
+24,Trần Minh Anh,Mắt,18,mờ mắt,9,4.7,images/doctors/doctor_24.svg
+25,Nguyễn Đức Trí,Răng hàm mặt,19,sâu răng,6,4.5,images/doctors/doctor_25.svg
+26,Phạm Thị Hoa,Nhi khoa,20,sốt trẻ em,10,4.6,images/doctors/doctor_26.svg
+27,Bùi Minh Khang,Tim mạch,7,hồi hộp,15,4.8,images/doctors/doctor_27.svg
+28,Đỗ Văn Dũng,Thần kinh,8,đau nửa đầu,14,4.8,images/doctors/doctor_28.svg
+29,Lương Mỹ Linh,Sản phụ khoa,9,rối loạn kinh nguyệt,12,4.7,images/doctors/doctor_29.svg
+30,Nguyễn Hải Nam,Nội tiết,10,khát nước nhiều,9,4.5,images/doctors/doctor_30.svg

@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+{% set title = "Danh sách bác sĩ" %}
+
+{% block content %}
+<div class="page-title">
+    <div>
+        <span class="page-kicker">Doctors</span>
+        <h2 class="fw-bold">Danh sách bác sĩ</h2>
+        <p class="text-muted">Tìm kiếm bác sĩ theo tên, chuyên khoa hoặc triệu chứng.</p>
+    </div>
+</div>
+
+<form class="search-ultra mb-4" method="get">
+    <input name="q" value="{{ q }}" class="form-control form-control-lg" placeholder="Ví dụ: sốt, tim mạch, đau họng, nhi khoa...">
+    <button class="btn btn-primary btn-lg rounded-pill px-4"><i class="bi bi-search"></i> Tìm</button>
+</form>
+
+<div class="row g-4">
+    {% for d in doctors %}
+    {% set c = clinic_map.get(d.clinic_id) %}
+    <div class="col-md-6 col-lg-4">
+        <div class="doctor-ultra-card doctor-photo-card">
+            <div class="doctor-photo-wrap">
+                <img src="{{ url_for('static', filename=d.image) }}" alt="{{ d.doctor_name }}" class="doctor-photo">
+            </div>
+            <h5>{{ d.doctor_name }}</h5>
+            <div class="specialty-pill">{{ d.specialty }}</div>
+            <p class="text-muted mt-3 mb-1"><i class="bi bi-hospital"></i> {{ c.clinic_name if c else "Không rõ" }}</p>
+            <p class="text-muted mb-3"><i class="bi bi-activity"></i> Triệu chứng: {{ d.symptom_keyword }}</p>
+            <div class="doctor-meta">
+                <span><i class="bi bi-award"></i> {{ d.experience_years }} năm</span>
+                <span><i class="bi bi-star-fill"></i> {{ d.rating }}</span>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

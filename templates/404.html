@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+{% set title = "Không tìm thấy trang" %}
+
+{% block content %}
+<div class="empty-state big">
+    <i class="bi bi-exclamation-triangle"></i>
+    <h1 class="fw-bold">404</h1>
+    <h3>Không tìm thấy trang</h3>
+    <p>Đường dẫn bạn truy cập không tồn tại.</p>
+    <a href="{{ url_for('index') }}" class="btn btn-primary rounded-pill px-4">Về trang chủ</a>
+</div>
+{% endblock %}

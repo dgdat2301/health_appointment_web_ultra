@@ -1,0 +1,9 @@
+﻿appointment_id,patient_id,user_id,patient_name,patient_email,phone,home_address,doctor_id,clinic_id,appointment_time,symptom,status
+1,1,2,Nguyễn Văn User,user@gmail.com,0911111111,Hà Đông,1,1,2026-06-25 08:00,sốt,Canceled
+2,2,3,Trần Khánh Linh,linh@gmail.com,0922222222,Cầu Giấy,3,2,2026-06-25 09:00,đau họng,Booked
+3,3,4,Lê Minh Đức,minh@gmail.com,0933333333,Mỹ Đình,4,3,2026-06-25 10:00,đau lưng,Booked
+4,4,2,Phạm Thu Trang,trang@gmail.com,0944444444,Thanh Xuân,6,5,2026-06-26 08:30,đau bụng,Canceled
+5,5,3,Hoàng Gia Bảo,bao@gmail.com,0955555555,Đống Đa,10,4,2026-06-26 14:00,đau đầu,Booked
+6,1,2,Nguyễn Văn User,user@gmail.com,0911111111,Hà Đông,9,3,2026-06-27 09:30,đau răng,Canceled
+7,6,2,Nguyễn Văn User,user@gmail.com,0911111111,Hà Đông,1,1,2026-06-27 03:05,sốt,Canceled
+8,7,5,Thành Đạt Dương,duongthanhdat2301@gmail.com,0978908880,cầu giấy,3,2,2026-06-27 03:08,đau họng,Booked
