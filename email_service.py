@@ -43,7 +43,7 @@ Hệ thống Health Booking Ultra
             msg["Subject"] = subject
             msg.set_content(body)
 
-            with smtplib.SMTP_SSL("smtp.gmail.com", 465) as smtp:
+            with smtplib.SMTP_SSL("smtp.gmail.com", 465, timeout=8) as smtp:
                 smtp.login(self.sender_email, self.app_password)
                 smtp.send_message(msg)
 
